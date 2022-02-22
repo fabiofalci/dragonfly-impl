@@ -2,28 +2,28 @@
 
 namespace df {
 
-    Manager::Manager() {
-        setType("Manager");
-    }
+Manager::Manager() {
+    setType("Manager");
+}
 
-    Manager::~Manager() { }
-    
-    void Manager::setType(std::string type) {
-        m_type = type;
-    }
+Manager::~Manager() { }
 
-    int Manager::startUp() {
-        m_is_started = true;
-        return -0;
-    }
+void Manager::setType(std::string type) {
+    m_type = type;
+}
 
-    void Manager::shutDown() {
-        m_is_started = false;
-    }
+int Manager::startUp() {
+    m_is_started = true;
+    return -0;
+}
 
-    bool Manager::isStarted() const {
-        return m_is_started;
-    }
+void Manager::shutDown() {
+    m_is_started = false;
+}
+
+bool Manager::isStarted() const {
+    return m_is_started;
+}
     
 
 }
