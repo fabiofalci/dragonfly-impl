@@ -21,7 +21,7 @@ class LogManager : public Manager {
 
     public:
         ~LogManager();
-        static LogManager &getInstance();
+        static LogManager& getInstance();
         int startUp();
         void shutDown();
         void setFlush(bool do_flush=true);
@@ -31,4 +31,4 @@ class LogManager : public Manager {
 
 }
 
-#endif __LOG_MANAGER_H__
+#endif // __LOG_MANAGER_H__
