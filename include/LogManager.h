@@ -4,6 +4,8 @@
 #include <stdio.h>
 #include "Manager.h"
 
+#define LM df::LogManager::getInstance()
+
 namespace df {
 
 const std::string LOGFILE_NAME = "dragonfly.log";

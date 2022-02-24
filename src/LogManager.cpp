@@ -19,18 +19,21 @@ LogManager& LogManager::getInstance() {
 
 int LogManager::startUp() {
     m_p_f = fopen(LOGFILE_NAME.c_str(), "wt");
-    if (m_p_f != nullptr) 
+    if (m_p_f != nullptr)  {
+        Manager::startUp();
         return 0;
+    }
     
     return -1;
 }
 
 void LogManager::shutDown() {
     fclose(m_p_f);
+    Manager::shutDown();
 }
 
 void LogManager::setFlush(bool do_flush) {
-
+    m_do_flush = do_flush;
 }
 
 int LogManager::writeLog(const char *fmt, ...) const {
@@ -47,6 +50,9 @@ int LogManager::writeLog(const char *fmt, ...) const {
     std::string message(buf.begin(), buf.end());
     fputs(message.c_str(), m_p_f);
     va_end(args);
+
+    if (m_do_flush)
+        fflush(m_p_f);
 
     return size;
 }
