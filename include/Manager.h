@@ -1,3 +1,6 @@
+#ifndef __MANAGER_H__
+#define __MANAGER_H__
+
 #include <string>
 
 namespace df {
@@ -24,3 +27,5 @@ class Manager {
 };
 
 }
+
+#endif // __MANAGER_H__

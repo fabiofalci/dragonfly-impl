@@ -1,4 +1,5 @@
 #include "GameManager.h"
+#include "LogManager.h"
 
 namespace df {
 
@@ -20,10 +21,15 @@ GameManager& GameManager::getInstance() {
 }
 
 int GameManager::startUp() {
-    return 0;
+    LM.startUp();
+    return Manager::startUp();
 }
 
-void GameManager::shutDown() {}
+void GameManager::shutDown() {
+    LM.shutDown();
+    return Manager::shutDown();
+}
+
 void GameManager::run() {}
 void GameManager::setGameOver(bool new_game_over) {}
 

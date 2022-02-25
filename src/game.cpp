@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) {
     is_started = p_manager->isStarted();
     printf("Test %b\n", is_started);
 
-    LM.startUp();
     LM.setFlush(true);
     LM.writeLog("Testing log %s", "first");
     LM.writeLog("Testing log another line %s = %s and %i", "second time", "abc", 10);
@@ -46,6 +45,5 @@ int main(int argc, char *argv[]) {
     printf("Clock delta 6: (sleep 3000) %ld\n", clock->delta());
     printf("Clock delta 7: %ld\n", clock->delta());
 
-    LM.shutDown();
     return 0;
 }
