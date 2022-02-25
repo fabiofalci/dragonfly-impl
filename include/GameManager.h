@@ -3,6 +3,8 @@
 
 #include "Manager.h"
 
+#define GM df::GameManager::getInstance()
+
 namespace df {
 
 class GameManager : public Manager {

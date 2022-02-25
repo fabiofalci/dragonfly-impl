@@ -3,26 +3,14 @@
 #include <chrono>
 #include <thread>
 
-// #include "Manager.h"
 #include "LogManager.h"
+#include "GameManager.h"
 #include "Clock.h"
 
 int main(int argc, char *argv[]) {
-
-    df::Manager *p_manager = new df::Manager;
-
-    bool is_started = p_manager->isStarted();
-    printf("Test %b\n", is_started);
-
-    p_manager->startUp();
-    is_started = p_manager->isStarted();
-    printf("Test %b\n", is_started);
-
-    p_manager->shutDown();
-    is_started = p_manager->isStarted();
-    printf("Test %b\n", is_started);
-
+    GM.startUp();
     LM.setFlush(true);
+
     LM.writeLog("Testing log %s", "first");
     LM.writeLog("Testing log another line %s = %s and %i", "second time", "abc", 10);
 
@@ -45,5 +33,6 @@ int main(int argc, char *argv[]) {
     printf("Clock delta 6: (sleep 3000) %ld\n", clock->delta());
     printf("Clock delta 7: %ld\n", clock->delta());
 
+    GM.shutDown();
     return 0;
 }

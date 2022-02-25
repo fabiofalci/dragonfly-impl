@@ -20,7 +20,7 @@ LogManager& LogManager::getInstance() {
 }
 
 int LogManager::startUp() {
-    m_p_f = fopen(LOGFILE_NAME.c_str(), "wt");
+    m_p_f = fopen(LOGFILE_NAME.c_str(), "wat");
     if (m_p_f != nullptr)  {
         Manager::startUp();
         return 0;

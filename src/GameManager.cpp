@@ -26,6 +26,7 @@ int GameManager::startUp() {
 }
 
 void GameManager::shutDown() {
+    game_over = true;
     LM.shutDown();
     return Manager::shutDown();
 }
