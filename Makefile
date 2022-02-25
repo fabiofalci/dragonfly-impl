@@ -6,6 +6,7 @@ INCDIR= -I./include/
 GAMESRC= \
          src/Manager.cpp \
          src/LogManager.cpp \
+         src/Clock.cpp \
 
 GAME= src/game.cpp
 EXECUTABLE= game
