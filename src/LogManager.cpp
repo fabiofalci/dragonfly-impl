@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdarg.h>
 #include <vector>
+#include <cstring>
+#include <iostream>
 #include "LogManager.h"
 
 namespace df {
@@ -39,14 +41,19 @@ void LogManager::setFlush(bool do_flush) {
 int LogManager::writeLog(const char *fmt, ...) const {
     va_list args_size;
     va_start(args_size, fmt);
-    int size = std::vsnprintf(nullptr, 0, fmt, args_size);
+
+    char *nfmt = new char[std::strlen(fmt) + 2];
+    std::strcpy(nfmt, fmt);
+    std::strcat(nfmt, "\n");
+
+    int size = std::vsnprintf(nullptr, 0, nfmt, args_size);
     va_end(args_size);
     
     std::vector<char> buf(size + 1);
 
     va_list args;
     va_start(args, fmt);
-    std::vsnprintf(&buf[0], buf.size(), fmt, args);
+    std::vsnprintf(&buf[0], buf.size(), nfmt, args);
     std::string message(buf.begin(), buf.end());
     fputs(message.c_str(), m_p_f);
     va_end(args);

@@ -24,8 +24,8 @@ int main(int argc, char *argv[]) {
 
     LM.startUp();
     LM.setFlush(true);
-    LM.writeLog("Testing log %s\n", "first");
-    LM.writeLog("Testing log another line %s = %s and %i\n", "second time", "abc", 10);
+    LM.writeLog("Testing log %s", "first");
+    LM.writeLog("Testing log another line %s = %s and %i", "second time", "abc", 10);
 
     df::Clock *clock = new df::Clock;
     printf("Clock delta 1: %ld\n", clock->delta());

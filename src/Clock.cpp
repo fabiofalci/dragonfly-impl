@@ -28,7 +28,7 @@ long int Clock::split() const {
     long int current_time = spec.tv_sec * 1000000 + spec.tv_nsec / 1000;
     long int elapsed_time = current_time - m_previous_time;
 
-    LM.writeLog("Delta: %ld - %ld = %ld", current_time, m_previous_time, elapsed_time);
+    LM.writeLog("Clock reading: %ld - %ld = %ld", current_time, m_previous_time, elapsed_time);
 
     return elapsed_time;
 }
