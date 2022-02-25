@@ -1,5 +1,10 @@
 #include "GameManager.h"
 #include "LogManager.h"
+#include "Clock.h"
+
+#include <chrono>
+#include <thread>
+
 
 namespace df {
 
@@ -27,10 +32,6 @@ void GameManager::shutDown() {
     return Manager::shutDown();
 }
 
-void GameManager::run() {
-
-}
-
 void GameManager::setGameOver(bool new_game_over) {
     game_over = new_game_over;
 }
@@ -41,6 +42,22 @@ bool GameManager::getGameOver() const {
 
 int GameManager::getFrameTime() const {
     return 0;
+}
+
+void GameManager::run() {
+    df::Clock *clock = new df::Clock;
+
+    long int loop_time = -1;
+    while (!game_over) {
+        clock->delta();
+
+        // to stuff
+        LM.writeLog("Loop %ld", loop_time);
+
+        loop_time = clock->split();
+        std::this_thread::sleep_for(std::chrono::milliseconds(FRAME_TIME_DEFAULT - loop_time));
+    }
+
 }
 
 }

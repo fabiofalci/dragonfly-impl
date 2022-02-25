@@ -7,6 +7,8 @@
 
 namespace df {
 
+const int FRAME_TIME_DEFAULT = 33;
+
 class GameManager : public Manager {
     
     private:
