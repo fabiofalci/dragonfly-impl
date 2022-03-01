@@ -1,6 +1,7 @@
+#include <time.h>
+
 #include "Clock.h"
 #include "LogManager.h"
-#include <time.h>
 
 namespace df {
 

@@ -8,6 +8,7 @@ GAMESRC= \
          src/LogManager.cpp \
          src/Clock.cpp \
          src/GameManager.cpp \
+         src/Vector.cpp \
 
 GAME= src/game.cpp
 EXECUTABLE= game
