@@ -4,9 +4,11 @@
 namespace df {
 
 Object::Object() {
+    // TODO add to game world
 }
 
 Object::~Object() {
+    // TODO remove from game world
 }
 
 void Object::setId(float new_id) {

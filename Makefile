@@ -10,6 +10,7 @@ GAMESRC= \
          src/GameManager.cpp \
          src/Vector.cpp \
          src/Object.cpp \
+         src/ObjectList.cpp \
 
 GAME= src/game.cpp
 EXECUTABLE= game
