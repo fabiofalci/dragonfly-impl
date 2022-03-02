@@ -50,8 +50,7 @@ void Vector::scale(float s) {
 }
 
 Vector Vector::operator+(const Vector &other) const {
-    Vector *vector = new Vector(m_x + other.getX(), m_y + other.getY());
-    return *vector;
+    return *new Vector(m_x + other.getX(), m_y + other.getY());
 }
 
 }
