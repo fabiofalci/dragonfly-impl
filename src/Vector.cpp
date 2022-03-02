@@ -1,4 +1,6 @@
 
+#include "math.h"
+
 #include "Vector.h"
 
 namespace df {
@@ -30,19 +32,26 @@ float Vector::getY() const {
 }
 
 float Vector::getMagnitude() const {
-    return 0;
+    float mag = sqrt(m_x * m_x + m_y * m_y);
+    return mag;
 }
 
 void Vector::normalize() {
-
+    float lentgh = getMagnitude();
+    if (lentgh > 0) {
+        m_x = m_x / lentgh;
+        m_y = m_y / lentgh;
+    }
 }
 
 void Vector::scale(float s) {
-
+    m_x = m_x * s;
+    m_y = m_y * s;
 }
 
 Vector Vector::operator+(const Vector &other) const {
-    return other;
+    Vector *vector = new Vector(m_x + other.getX(), m_y + other.getY());
+    return *vector;
 }
 
 }
