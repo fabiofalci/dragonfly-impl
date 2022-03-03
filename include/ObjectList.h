@@ -16,7 +16,7 @@ class ObjectList {
 
     private: 
         int m_count;
-        Object m_p_obj[MAX_OBJECTS];
+        Object *m_p_obj[MAX_OBJECTS];
 
     public:
         friend class ObjectListIterator;
