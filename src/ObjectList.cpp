@@ -7,7 +7,7 @@ ObjectList::ObjectList() {
 }
 
 int ObjectList::insert(Object *p_o) {
-    if (m_count == MAX_OBJECTS)
+    if (isFull())
         return -1;
 
     m_p_obj[m_count] = p_o;
@@ -28,19 +28,19 @@ int ObjectList::remove(Object *p_o) {
 }
 
 void ObjectList::clear() {
-
+    m_count = 0;
 }
 
 int ObjectList::getCount() const {
-    return -1;
+    return m_count;
 }
 
 bool ObjectList::isEmpty() const {
-    return true;    
+    return m_count == 0;    
 }
 
 bool ObjectList::isFull() const {
-    return false;    
+    return m_count == MAX_OBJECTS;
 }
 
 }
