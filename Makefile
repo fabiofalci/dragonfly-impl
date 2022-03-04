@@ -11,6 +11,7 @@ GAMESRC= \
          src/Vector.cpp \
          src/Object.cpp \
          src/ObjectList.cpp \
+         src/ObjectListIterator.cpp \
 
 GAME= src/game.cpp
 EXECUTABLE= game

@@ -5,7 +5,7 @@
 const int MAX_OBJECTS = 5000;
 
 #include "Object.h"
-// #include "ObjectListIterator.h"
+#include "ObjectListIterator.h"
 
 
 namespace df {
