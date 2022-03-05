@@ -17,14 +17,14 @@ class ObjectListIterator {
         const ObjectList *m_p_list;
 
     public:
-        ObjectListIterator(const ObjectList *p_1); 
+        ObjectListIterator(const ObjectList *p_list); 
 
         void first();
         void next();
 
         bool isDone() const;
 
-        Object *currentObject() const;
+        // Object *currentObject() const;
 };
 
 }
