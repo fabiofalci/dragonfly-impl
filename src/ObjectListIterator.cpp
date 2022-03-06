@@ -23,9 +23,8 @@ bool ObjectListIterator::isDone() const {
     return false;
 }
 
-// Object ObjectListIterator::*currentObject() const {
-//     // return *m_p_list->m_p_obj[m_index];
-//     return NULL;
-// }
+Object * ObjectListIterator::currentObject() const {
+    return m_p_list->m_p_obj[m_index];
+}
 
 }

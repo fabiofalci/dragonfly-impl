@@ -24,7 +24,7 @@ class ObjectListIterator {
 
         bool isDone() const;
 
-        // Object *currentObject() const;
+        Object *currentObject() const;
 };
 
 }
