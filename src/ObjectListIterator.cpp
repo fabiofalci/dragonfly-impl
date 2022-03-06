@@ -1,3 +1,4 @@
+#include <stdio.h>
 
 #include "ObjectListIterator.h"
 
@@ -18,6 +19,8 @@ void ObjectListIterator::first() {
 void ObjectListIterator::next() {
     if (m_index < m_p_list->m_count)
         m_index++;
+    
+    printf("Next index: %i\n", m_index);
 }
 
 bool ObjectListIterator::isDone() const {
