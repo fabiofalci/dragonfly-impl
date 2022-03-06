@@ -12,15 +12,16 @@ ObjectListIterator::ObjectListIterator(const ObjectList *p_list) {
 }
 
 void ObjectListIterator::first() {
-
+    m_index = 0;
 }
 
 void ObjectListIterator::next() {
-
+    if (m_index < m_p_list->m_count)
+        m_index++;
 }
 
 bool ObjectListIterator::isDone() const {
-    return false;
+    return m_index == m_p_list->m_count;
 }
 
 Object * ObjectListIterator::currentObject() const {
