@@ -12,6 +12,7 @@ GAMESRC= \
          src/Object.cpp \
          src/ObjectList.cpp \
          src/ObjectListIterator.cpp \
+         src/Event.cpp \
 
 GAME= src/game.cpp
 EXECUTABLE= game
