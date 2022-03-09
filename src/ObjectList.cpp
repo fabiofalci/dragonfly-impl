@@ -16,7 +16,7 @@ int ObjectList::insert(Object *p_o) {
 }
 
 int ObjectList::remove(Object *p_o) {
-    for (int i=0; i < MAX_OBJECTS; i++) {
+    for (int i=0; i < m_count; i++) {
         if (m_p_obj[i] == p_o) {
             m_p_obj[i] = m_p_obj[m_count - 1];
             m_count--;

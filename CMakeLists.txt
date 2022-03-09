@@ -33,6 +33,7 @@ target_link_libraries(engine_test
 add_executable(unit_tests
 	test/main.cpp
 	test/test_Hello.cpp
+	test/test_ObjectList.cpp
 )
 
 target_include_directories(unit_tests
