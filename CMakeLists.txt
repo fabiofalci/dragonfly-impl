@@ -35,6 +35,8 @@ add_executable(unit_tests
 	test/test_Hello.cpp
 	test/test_ObjectList.cpp
 	test/test_ObjectListIterator.cpp
+	test/test_Clock.cpp
+	test/test_GameManager.cpp
 )
 
 target_include_directories(unit_tests
