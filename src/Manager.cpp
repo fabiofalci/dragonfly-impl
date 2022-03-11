@@ -4,12 +4,17 @@ namespace df {
 
 Manager::Manager() {
     setType("Manager");
+    m_is_started = false;
 }
 
 Manager::~Manager() { }
 
 void Manager::setType(std::string type) {
     m_type = type;
+}
+
+std::string Manager::getType() const {
+    return m_type;
 }
 
 int Manager::startUp() {

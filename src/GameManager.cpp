@@ -10,6 +10,7 @@ namespace df {
 
 GameManager::GameManager() {
     setType("GameManager");
+    game_over = false;
 }
 
 GameManager::GameManager(GameManager const&) {}
@@ -22,6 +23,7 @@ GameManager& GameManager::getInstance() {
 }
 
 int GameManager::startUp() {
+    game_over = false;
     LM.startUp();
     return Manager::startUp();
 }
