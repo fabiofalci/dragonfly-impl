@@ -1,10 +1,9 @@
-#include "GameManager.h"
-#include "LogManager.h"
-#include "Clock.h"
-
 #include <chrono>
 #include <thread>
 
+#include "GameManager.h"
+#include "LogManager.h"
+#include "Clock.h"
 
 namespace df {
 

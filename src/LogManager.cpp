@@ -14,7 +14,6 @@ LogManager::LogManager() {
 
 LogManager::~LogManager() { }
 
-
 LogManager& LogManager::getInstance() {
     static LogManager *p_log_manager = new LogManager;
     return *p_log_manager;
