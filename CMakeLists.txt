@@ -39,6 +39,7 @@ add_executable(unit_tests
 	test/test_GameManager.cpp
 	test/test_Manager.cpp
 	test/test_Object.cpp
+	test/test_Vector.cpp
 )
 
 target_include_directories(unit_tests

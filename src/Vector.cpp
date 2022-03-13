@@ -31,6 +31,11 @@ float Vector::getY() const {
     return m_y;
 }
 
+void Vector::setXY(float new_x, float new_y) {
+    m_x = new_x;
+    m_y = new_y;
+}
+
 float Vector::getMagnitude() const {
     float mag = sqrt(m_x * m_x + m_y * m_y);
     return mag;

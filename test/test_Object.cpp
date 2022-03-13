@@ -16,7 +16,7 @@ SCENARIO( "Verify Object type", "[test_Object.cpp]" ) {
     REQUIRE( object->getType() == "my type" );
 }
 
-SCENARIO( "Verify Object positione", "[test_Object.cpp]" ) {
+SCENARIO( "Verify Object position", "[test_Object.cpp]" ) {
     Object *object = new Object;
     Vector *vector = new Vector(1, 2);
     object->setPosition(*vector);
