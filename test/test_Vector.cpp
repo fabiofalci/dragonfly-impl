@@ -35,3 +35,40 @@ SCENARIO( "Verify Vector x and y", "[test_Vector.cpp]" ) {
     REQUIRE( vector->getY() == 13 );
 }
 
+SCENARIO( "Verify Vector magnitude", "[test_Vector.cpp]" ) {
+    Vector *vector = new Vector(1, 1);
+    REQUIRE( vector->getMagnitude() == Approx(1.41421f) );
+
+    vector->setXY(30, 2);
+    REQUIRE(vector->getMagnitude() == Approx(30.06659f) );
+
+    vector->setXY(0, 0);
+    REQUIRE(vector->getMagnitude() == 0 );
+}
+
+SCENARIO( "Verify Vector scale", "[test_Vector.cpp]" ) {
+    Vector *vector = new Vector(1, 1);
+    vector->scale(10);
+
+    REQUIRE( vector->getX() == 10 );
+    REQUIRE( vector->getY() == 10 );
+
+    vector->setXY(5, 10);
+    vector->scale(2);
+    REQUIRE( vector->getX() == 10 );
+    REQUIRE( vector->getY() == 20 );
+}
+
+SCENARIO( "Verify Vector normalize", "[test_Vector.cpp]" ) {
+    Vector *vector = new Vector(1, 1);
+    vector->normalize();
+
+    REQUIRE( vector->getX() == Approx(0.70711f) );
+    REQUIRE( vector->getY() == Approx(0.70711f) );
+
+    vector->setXY(10, 20);
+    vector->normalize();
+    REQUIRE( vector->getX() == Approx(0.44721f) );
+    REQUIRE( vector->getY() == Approx(0.89442f) );
+}
+
