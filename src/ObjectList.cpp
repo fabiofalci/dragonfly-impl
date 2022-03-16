@@ -4,6 +4,7 @@
 namespace df {
 
 ObjectList::ObjectList() {
+    clear();
 }
 
 int ObjectList::insert(Object *p_o) {

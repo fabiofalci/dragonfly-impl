@@ -5,15 +5,15 @@
 using namespace df;
 
 SCENARIO( "Verify Clock", "[test_Clock.cpp]" ) {
-    Clock *clock = new Clock;
+    Clock clock;
 
-    long int delta = clock->delta();
+    long int delta = clock.delta();
     REQUIRE( delta > 0 );
 
-    long int split = clock->split();
+    long int split = clock.split();
     REQUIRE( split > 0 );
 
-    long int split2 = clock->split();
+    long int split2 = clock.split();
 
     REQUIRE( split2 > split );
 }

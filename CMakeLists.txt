@@ -35,7 +35,6 @@ add_executable(unit_tests
 	test/test_Hello.cpp
 	test/test_ObjectList.cpp
 	test/test_ObjectListIterator.cpp
-	test/test_Clock.cpp
 	test/test_GameManager.cpp
 	test/test_Manager.cpp
 	test/test_Object.cpp

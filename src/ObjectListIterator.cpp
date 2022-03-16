@@ -26,6 +26,9 @@ bool ObjectListIterator::isDone() const {
 }
 
 Object * ObjectListIterator::currentObject() const {
+    if (isDone())
+        return nullptr;
+
     return m_p_list->m_p_obj[m_index];
 }
 
