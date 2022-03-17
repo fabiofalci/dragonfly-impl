@@ -6,6 +6,7 @@ include_directories(include)
 add_library(engine
 	src/Clock.cpp
 	src/Event.cpp
+	src/EventStep.cpp
 	src/GameManager.cpp
 	src/LogManager.cpp
 	src/Manager.cpp
@@ -32,12 +33,13 @@ target_link_libraries(engine_test
 
 add_executable(unit_tests
 	test/main.cpp
-	test/test_Hello.cpp
-	test/test_ObjectList.cpp
-	test/test_ObjectListIterator.cpp
+	test/test_EventStep.cpp
 	test/test_GameManager.cpp
+	test/test_Hello.cpp
 	test/test_Manager.cpp
 	test/test_Object.cpp
+	test/test_ObjectList.cpp
+	test/test_ObjectListIterator.cpp
 	test/test_Vector.cpp
 )
 
