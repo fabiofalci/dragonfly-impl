@@ -35,4 +35,8 @@ Vector Object::getPosition() const {
     return m_position;
 }
 
+int Object::eventHandler(const Event *p_e) {
+    return 0;
+}
+
 }
