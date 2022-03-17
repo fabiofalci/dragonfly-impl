@@ -3,10 +3,7 @@
 
 namespace df {
 
-EventStep::EventStep() {
-    setType("STEP_EVENT");
-    setStepCount(0);
-}
+EventStep::EventStep() : EventStep(0) { }
 
 EventStep::EventStep(int init_step_count) {
     setType("STEP_EVENT");
