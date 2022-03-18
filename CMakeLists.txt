@@ -42,6 +42,7 @@ add_executable(unit_tests
 	test/test_ObjectList.cpp
 	test/test_ObjectListIterator.cpp
 	test/test_Vector.cpp
+	test/test_WorldManager.cpp
 )
 
 target_include_directories(unit_tests

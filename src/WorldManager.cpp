@@ -23,21 +23,19 @@ void WorldManager::shutDown() {
 }
 
 int WorldManager::insertObject(Object *p_o) {
-    return 0;
+    return m_updates.insert(p_o);
 }
 
 int WorldManager::removeObject(Object *p_o) {
-    return 0;
+    return m_updates.remove(p_o);
 }
 
 ObjectList WorldManager::getAllObjects() const {
-    ObjectList li;
-    return li;
+    return m_updates;
 }
 
 ObjectList WorldManager::objectsOfType(std::string type) const {
-    ObjectList li;
-    return li;
+    return m_updates;
 }
 
 void WorldManager::update() {
