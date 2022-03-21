@@ -81,3 +81,46 @@ SCENARIO( "Verify WorldManager get all objects", "[test_WorldManager.cpp]" ) {
 
     world_manager.shutDown();
 }
+
+SCENARIO( "Verify WorldManager get objects of type", "[test_WorldManager.cpp]" ) {
+    WorldManager &world_manager = WorldManager::getInstance();
+    world_manager.startUp();
+
+    Object obj0, obj1, obj2;
+    obj0.setType("CAR");
+    obj1.setType("TREE");
+    obj2.setType("CAR");
+    world_manager.insertObject(&obj0);
+    world_manager.insertObject(&obj1);
+    world_manager.insertObject(&obj2);
+    
+    REQUIRE( world_manager.objectsOfType("CAR").getCount() == 2 );
+    REQUIRE( world_manager.objectsOfType("TREE").getCount() == 1 );
+    REQUIRE( world_manager.objectsOfType("PLANE").getCount() == 0 );
+
+    world_manager.shutDown();
+}
+
+SCENARIO( "Verify WorldManager get objects of type elements", "[test_WorldManager.cpp]" ) {
+    WorldManager &world_manager = WorldManager::getInstance();
+    world_manager.startUp();
+
+    Object obj0, obj1, obj2;
+    obj0.setType("CAR");
+    obj1.setType("TREE");
+    obj2.setType("CAR");
+    world_manager.insertObject(&obj0);
+    world_manager.insertObject(&obj1);
+    world_manager.insertObject(&obj2);
+    
+    ObjectList object_list = world_manager.objectsOfType("CAR");
+    ObjectListIterator li(&object_list);
+    li.first();
+    REQUIRE( li.currentObject() == &obj0 );
+    li.next();
+    REQUIRE( li.currentObject() == &obj2 );
+    li.next();
+    REQUIRE( li.isDone() == true );
+
+    world_manager.shutDown();
+}

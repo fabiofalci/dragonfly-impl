@@ -39,7 +39,14 @@ ObjectList WorldManager::getAllObjects() const {
 }
 
 ObjectList WorldManager::objectsOfType(std::string type) const {
-    return m_updates;
+    ObjectList object_list;
+    ObjectListIterator li(&m_updates);
+    
+    for (li.first(); !li.isDone(); li.next()) 
+        if (li.currentObject()->getType() == type) 
+            object_list.insert(li.currentObject());
+
+    return object_list;
 }
 
 void WorldManager::update() {
