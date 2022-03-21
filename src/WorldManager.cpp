@@ -15,10 +15,14 @@ WorldManager& WorldManager::getInstance() {
 
 int WorldManager::startUp() {
     Manager::startUp();
+    m_updates.clear();
+    m_deletions.clear();
     return 0;
 }
 
 void WorldManager::shutDown() {
+    m_updates.clear();
+    m_deletions.clear();
     Manager::shutDown();
 }
 
