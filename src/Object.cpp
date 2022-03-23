@@ -1,14 +1,15 @@
 
 #include "Object.h"
+#include "WorldManager.h"
 
 namespace df {
 
 Object::Object() {
-    // TODO add to game world
+    WM.insertObject(this);
 }
 
 Object::~Object() {
-    // TODO remove from game world
+    WM.removeObject(this);
 }
 
 void Object::setId(float new_id) {

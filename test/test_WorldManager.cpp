@@ -40,19 +40,19 @@ SCENARIO( "Verify WorldManager remove object not found", "[test_WorldManager.cpp
     world_manager.startUp();
 
     Object obj0;
+    REQUIRE( world_manager.removeObject(&obj0) == 0 );
     REQUIRE( world_manager.removeObject(&obj0) == -1 );
 
     world_manager.shutDown();
 }
 
-SCENARIO( "Verify WorldManager insert and remove object", "[test_WorldManager.cpp]" ) {
+SCENARIO( "Verify WorldManager destructor", "[test_WorldManager.cpp]" ) {
     WorldManager &world_manager = WorldManager::getInstance();
     world_manager.startUp();
 
-    Object obj0;
-    REQUIRE( world_manager.insertObject(&obj0) == 0 );
-    REQUIRE( world_manager.removeObject(&obj0) == 0 );
-    REQUIRE( world_manager.removeObject(&obj0) == -1 );
+    Object *obj0 = new Object;
+    delete obj0;
+    REQUIRE( world_manager.removeObject(obj0) == -1 );
 
     world_manager.shutDown();
 }
@@ -71,9 +71,6 @@ SCENARIO( "Verify WorldManager get all objects", "[test_WorldManager.cpp]" ) {
     world_manager.startUp();
 
     Object obj0, obj1, obj2;
-    world_manager.insertObject(&obj0);
-    world_manager.insertObject(&obj1);
-    world_manager.insertObject(&obj2);
     
     ObjectList object_list = world_manager.getAllObjects();
     REQUIRE( object_list.isEmpty() == false );
@@ -90,9 +87,6 @@ SCENARIO( "Verify WorldManager get objects of type", "[test_WorldManager.cpp]" )
     obj0.setType("CAR");
     obj1.setType("TREE");
     obj2.setType("CAR");
-    world_manager.insertObject(&obj0);
-    world_manager.insertObject(&obj1);
-    world_manager.insertObject(&obj2);
     
     REQUIRE( world_manager.objectsOfType("CAR").getCount() == 2 );
     REQUIRE( world_manager.objectsOfType("TREE").getCount() == 1 );
@@ -109,9 +103,6 @@ SCENARIO( "Verify WorldManager get objects of type elements", "[test_WorldManage
     obj0.setType("CAR");
     obj1.setType("TREE");
     obj2.setType("CAR");
-    world_manager.insertObject(&obj0);
-    world_manager.insertObject(&obj1);
-    world_manager.insertObject(&obj2);
     
     ObjectList object_list = world_manager.objectsOfType("CAR");
     ObjectListIterator li(&object_list);

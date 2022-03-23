@@ -6,6 +6,8 @@
 #include "Manager.h"
 #include "ObjectList.h"
 
+#define WM df::WorldManager::getInstance()
+
 namespace df {
 
 class WorldManager : public Manager {
