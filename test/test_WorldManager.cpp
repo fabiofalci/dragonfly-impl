@@ -122,10 +122,34 @@ SCENARIO( "Verify WorldManager mark for delete", "[test_WorldManager.cpp]" ) {
 
     Object obj0, obj1;
 
-    world_manager.markForDelete(&obj0);
     REQUIRE( world_manager.markForDelete(&obj0) == 0 );
     REQUIRE( world_manager.markForDelete(&obj0) == 0 );
     REQUIRE( world_manager.markForDelete(&obj1) == 0 );
+
+    world_manager.shutDown();
+}
+
+SCENARIO( "Verify WorldManager mark for delete and update", "[test_WorldManager.cpp]" ) {
+    WorldManager &world_manager = WorldManager::getInstance();
+    world_manager.startUp();
+
+    Object obj0, obj1, obj2;
+
+    world_manager.markForDelete(&obj1);
+    REQUIRE( world_manager.getAllObjects().getCount() == 3 );
+
+    world_manager.update();
+    REQUIRE( world_manager.getAllObjects().getCount() == 2 );
+
+    ObjectList all_objects = world_manager.getAllObjects();
+    ObjectListIterator li(&all_objects);
+
+    li.first();
+    REQUIRE( li.currentObject() == &obj0 );
+    li.next();
+    REQUIRE( li.currentObject() == &obj2 );
+    li.next();
+    REQUIRE( li.isDone() == true );
 
     world_manager.shutDown();
 }

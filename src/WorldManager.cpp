@@ -50,6 +50,14 @@ ObjectList WorldManager::objectsOfType(std::string type) const {
 }
 
 void WorldManager::update() {
+    ObjectListIterator li(&m_deletions);
+
+    for (li.first(); !li.isDone(); li.next())  {
+        m_updates.remove(li.currentObject());
+        delete li.currentObject();
+    }
+
+    m_deletions.clear();
 }
 
 int WorldManager::markForDelete(Object *p_o) {
