@@ -4,6 +4,9 @@
 #include "GameManager.h"
 #include "LogManager.h"
 #include "Clock.h"
+#include "ObjectList.h"
+#include "WorldManager.h"
+#include "EventStep.h"
 
 namespace df {
 
@@ -52,8 +55,16 @@ void GameManager::run() {
     while (!game_over) {
         clock->delta();
 
-        // to stuff
+        ObjectList all_objects = WM.getAllObjects();
+        ObjectListIterator li(&all_objects);
+
+        EventStep event_step;
+        for (li.first(); !li.isDone(); li.next())
+            li.currentObject()->eventHandler(&event_step);
+
         LM.writeLog("Loop %ld", loop_time);
+
+        WM.update();
 
         loop_time = clock->split();
         std::this_thread::sleep_for(std::chrono::milliseconds(FRAME_TIME_DEFAULT - loop_time));

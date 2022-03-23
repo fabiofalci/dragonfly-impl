@@ -15,6 +15,7 @@ add_library(engine
 	src/ObjectListIterator.cpp
 	src/Vector.cpp
 	src/WorldManager.cpp
+	src/Saucer.cpp
 )
 
 target_include_directories(engine
