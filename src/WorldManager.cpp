@@ -53,7 +53,13 @@ void WorldManager::update() {
 }
 
 int WorldManager::markForDelete(Object *p_o) {
-    return 0;
+    ObjectListIterator li(&m_deletions);
+
+    for (li.first(); !li.isDone(); li.next()) 
+        if (li.currentObject() == p_o)
+            return 0;
+
+    return m_deletions.insert(p_o);
 }
 
 }

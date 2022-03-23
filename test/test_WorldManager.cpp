@@ -115,3 +115,17 @@ SCENARIO( "Verify WorldManager get objects of type elements", "[test_WorldManage
 
     world_manager.shutDown();
 }
+
+SCENARIO( "Verify WorldManager mark for delete", "[test_WorldManager.cpp]" ) {
+    WorldManager &world_manager = WorldManager::getInstance();
+    world_manager.startUp();
+
+    Object obj0, obj1;
+
+    world_manager.markForDelete(&obj0);
+    REQUIRE( world_manager.markForDelete(&obj0) == 0 );
+    REQUIRE( world_manager.markForDelete(&obj0) == 0 );
+    REQUIRE( world_manager.markForDelete(&obj1) == 0 );
+
+    world_manager.shutDown();
+}
