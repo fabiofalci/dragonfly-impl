@@ -15,7 +15,6 @@ add_library(engine
 	src/ObjectListIterator.cpp
 	src/Vector.cpp
 	src/WorldManager.cpp
-	src/Saucer.cpp
 )
 
 target_include_directories(engine
@@ -23,11 +22,12 @@ target_include_directories(engine
 		src
 )
 
-add_executable(engine_test
-	src/game.cpp
+add_executable(engine_example
+	example/game.cpp
+	example/Saucer.cpp
 )
 
-target_link_libraries(engine_test
+target_link_libraries(engine_example
 	PRIVATE
 		engine
 )
