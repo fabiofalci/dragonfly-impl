@@ -4,7 +4,6 @@
 #include "GameManager.h"
 #include "LogManager.h"
 #include "Clock.h"
-#include "ObjectList.h"
 #include "WorldManager.h"
 #include "EventStep.h"
 
@@ -57,12 +56,8 @@ void GameManager::run() {
     while (!game_over) {
         clock->delta();
 
-        ObjectList all_objects = WM.getAllObjects();
-        ObjectListIterator li(&all_objects);
-
         EventStep event_step;
-        for (li.first(); !li.isDone(); li.next())
-            li.currentObject()->eventHandler(&event_step);
+        onEvent(&event_step);
 
         WM.update();
 

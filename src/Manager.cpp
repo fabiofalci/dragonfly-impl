@@ -1,4 +1,6 @@
 #include "Manager.h"
+#include "ObjectList.h"
+#include "WorldManager.h"
 
 namespace df {
 
@@ -30,5 +32,18 @@ bool Manager::isStarted() const {
     return m_is_started;
 }
     
+int Manager::onEvent(const Event *p_event) const {
+    int count = 0;
+
+    ObjectList all_objects = WM.getAllObjects();
+    ObjectListIterator li(&all_objects);
+
+    for (li.first(); !li.isDone(); li.next()) {
+        li.currentObject()->eventHandler(p_event);
+        count++;
+    }
+
+    return count;
+}
 
 }

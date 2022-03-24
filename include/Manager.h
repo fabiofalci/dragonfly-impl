@@ -3,6 +3,8 @@
 
 #include <string>
 
+#include "Event.h"
+
 namespace df {
 
 class Manager {
@@ -24,6 +26,8 @@ class Manager {
         virtual void shutDown();
 
         bool isStarted() const;
+
+        int onEvent(const Event *p_event) const;
 };
 
 }
