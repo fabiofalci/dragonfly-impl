@@ -14,8 +14,9 @@ int Saucer::eventHandler(const df::Event *p_e) {
         df::Vector position(getPosition().getX() + 1.2, getPosition().getY() + 2.9);
         setPosition(position);
 
-        LM.writeLog("Moved object to (%f, %f)", getPosition().getX(), getPosition().getY());
-        if (++step_count == 100)
+        step_count++;
+        LM.writeLog("Moved object to (%f, %f) step count %i", getPosition().getX(), getPosition().getY(), step_count);
+        if (step_count == 100)
             GM.setGameOver(true);
 
         return 1;
