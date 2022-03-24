@@ -27,11 +27,13 @@ GameManager& GameManager::getInstance() {
 int GameManager::startUp() {
     game_over = false;
     LM.startUp();
+    WM.startUp();
     return Manager::startUp();
 }
 
 void GameManager::shutDown() {
     game_over = true;
+    WM.shutDown();
     LM.shutDown();
     return Manager::shutDown();
 }
@@ -62,9 +64,9 @@ void GameManager::run() {
         for (li.first(); !li.isDone(); li.next())
             li.currentObject()->eventHandler(&event_step);
 
-        LM.writeLog("Loop %ld", loop_time);
-
         WM.update();
+
+        LM.writeLog("Loop %ld", loop_time);
 
         loop_time = clock->split();
         std::this_thread::sleep_for(std::chrono::milliseconds(FRAME_TIME_DEFAULT - loop_time));
