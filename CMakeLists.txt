@@ -59,6 +59,13 @@ FetchContent_Declare(
 	GIT_TAG        v2.13.8
 )
 
-FetchContent_MakeAvailable(Catch2)
+FetchContent_Declare(
+    sfml
+    GIT_REPOSITORY https://github.com/SFML/SFML.git
+    GIT_TAG        2.5.1
+)
 
+FetchContent_MakeAvailable(Catch2 sfml)
+
+target_link_libraries(engine PRIVATE sfml-audio sfml-graphics sfml-system sfml-window)
 target_link_libraries(unit_tests PRIVATE Catch2 engine)
