@@ -5,6 +5,7 @@ include_directories(include)
 
 add_library(engine
 	src/Clock.cpp
+	src/DisplayManager.cpp
 	src/Event.cpp
 	src/EventStep.cpp
 	src/GameManager.cpp
