@@ -1,3 +1,4 @@
+#include <iostream>
 
 #include "DisplayManager.h"
 
@@ -5,6 +6,7 @@ namespace df {
 
 DisplayManager::DisplayManager() {
     setType("DisplayManager");
+    m_p_window = NULL;
 }
 
 DisplayManager::DisplayManager(DisplayManager const&) {}
@@ -17,6 +19,14 @@ DisplayManager& DisplayManager::getInstance() {
 }
 
 int DisplayManager::startUp() {
+    if (m_p_window != NULL)
+        return 1;
+
+    m_p_window = new sf::RenderWindow(sf::VideoMode(400, 300), WINDOW_TITLE_DEFAULT);
+    if (!m_p_window) {
+        std::cout << "Error! Unable to allocate RenderWindow" << std::endl;
+        return 0;
+    }
     return Manager::startUp();
 }
 
