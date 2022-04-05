@@ -22,7 +22,7 @@ int DisplayManager::startUp() {
     if (m_p_window != NULL)
         return 1;
 
-    m_p_window = new sf::RenderWindow(sf::VideoMode(400, 300), WINDOW_TITLE_DEFAULT);
+    m_p_window = new sf::RenderWindow(sf::VideoMode(WINDOW_HORIZONTAL_PIXELS_DEFAULT, WINDOW_VERTICAL_PIXELS_DEFAULT), WINDOW_TITLE_DEFAULT);
     if (!m_p_window) {
         std::cout << "Error! Unable to allocate RenderWindow" << std::endl;
         return 0;
@@ -55,6 +55,11 @@ int DisplayManager::getVerticalPixels() const {
 }
 
 int DisplayManager::swapBuffers() {
+    if (m_p_window == nullptr)
+        return 1;
+    
+    m_p_window->display();
+    m_p_window->clear();
     return 0;
 }
 
