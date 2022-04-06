@@ -1,6 +1,9 @@
+#include <chrono>
+#include <thread>
 
 #include "LogManager.h"
 #include "GameManager.h"
+#include "DisplayManager.h"
 #include "Saucer.h"
 #include "Vector.h"
 
@@ -21,7 +24,18 @@ void runGameManager() {
     GM.shutDown();
 }
 
+void runDisplayManager() {
+    DM.startUp();
+
+
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+
+    DM.shutDown();
+}
+
 int main(int argc, char *argv[]) {
-    runGameManager();
+    // runGameManager();
+    runDisplayManager();
     return 0;
 }

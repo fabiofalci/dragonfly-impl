@@ -30,7 +30,7 @@ add_executable(engine_example
 
 target_link_libraries(engine_example
 	PRIVATE
-		engine
+		engine sfml-audio sfml-graphics sfml-system sfml-window
 )
 
 

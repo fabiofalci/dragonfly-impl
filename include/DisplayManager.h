@@ -7,6 +7,8 @@
 #include "Manager.h"
 #include "Vector.h"
 
+#define DM df::DisplayManager::getInstance()
+
 namespace df {
 
 const int WINDOW_HORIZONTAL_PIXELS_DEFAULT = 1024;

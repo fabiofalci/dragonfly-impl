@@ -27,10 +27,14 @@ int DisplayManager::startUp() {
         std::cout << "Error! Unable to allocate RenderWindow" << std::endl;
         return 0;
     }
+
+    m_p_window->setMouseCursorVisible(false);
+    m_p_window->setVerticalSyncEnabled(true);
     return Manager::startUp();
 }
 
 void DisplayManager::shutDown() {
+    m_p_window->close();
     return Manager::shutDown();
 }
 
