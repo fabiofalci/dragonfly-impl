@@ -46,6 +46,11 @@ class DisplayManager : public Manager {
         int getVerticalPixels() const;
         int swapBuffers();
         sf::RenderWindow *getWindow() const;
+
+        float charHeight();
+        float charWidth();
+        Vector spacesToPixels(Vector spaces);
+        Vector pixelsToSpaces(Vector pixels);
 };
 
 }

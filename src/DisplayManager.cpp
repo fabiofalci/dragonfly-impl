@@ -78,4 +78,23 @@ sf::RenderWindow* DisplayManager::getWindow() const {
 }
 
 
+float DisplayManager::charHeight() {
+    return getVerticalPixels() / getVertical();
+}
+
+float DisplayManager::charWidth() {
+    return getHorizontalPixels() / getHorizontal();
+
+}
+
+Vector DisplayManager::spacesToPixels(Vector spaces) {
+    Vector vector(spaces.getX() * charWidth(), spaces.getY() * charHeight());
+    return vector;
+}
+
+Vector DisplayManager::pixelsToSpaces(Vector pixels) {
+    Vector vector(pixels.getX() / charWidth(), pixels.getY() / charHeight());
+    return vector;
+}
+
 }
