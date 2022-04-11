@@ -28,6 +28,12 @@ int DisplayManager::startUp() {
         return 0;
     }
 
+    sf::Font font;
+    if (font.loadFromFile("../df-font.ttf") == false) {
+        std::cout << "Error. Unable to load font df-font.ttf" << std::endl;
+        return 0;
+    }
+
     m_p_window->setMouseCursorVisible(false);
     m_p_window->setVerticalSyncEnabled(true);
     return Manager::startUp();

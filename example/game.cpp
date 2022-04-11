@@ -1,5 +1,6 @@
 #include <chrono>
 #include <thread>
+#include <iostream>
 
 #include "LogManager.h"
 #include "GameManager.h"
@@ -27,7 +28,24 @@ void runGameManager() {
 void runDisplayManager() {
     DM.startUp();
 
+    sf::Font font;
+    if (font.loadFromFile("../df-font.ttf") == false) {
+        std::cout << "Error. Unable to load font df-font.ttf" << std::endl;
+        return;
+    }
 
+    sf::RenderWindow *window = DM.getWindow();
+    sf::Text text;
+    text.setFont(font);
+    text.setString("Hello world");
+    text.setCharacterSize(32);
+    text.setFillColor(sf::Color::Green);
+    text.setStyle(sf::Text::Bold);
+    text.setPosition(93, 134);
+
+    window->clear();
+    window->draw(text);
+    window->display();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(10000));
 
