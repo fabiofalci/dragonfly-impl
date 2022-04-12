@@ -7,6 +7,11 @@ namespace df {
 DisplayManager::DisplayManager() {
     setType("DisplayManager");
     m_p_window = NULL;
+
+    m_window_horizontal_pixels = WINDOW_HORIZONTAL_PIXELS_DEFAULT;
+    m_window_vertical_pixels = WINDOW_VERTICAL_PIXELS_DEFAULT;
+    m_window_horizontal_chars = WINDOW_HORIZONTAL_CHARS_DEFAULT ;
+    m_window_vertical_chars = WINDOW_VERTICAL_CHARS_DEFAULT;
 }
 
 DisplayManager::DisplayManager(DisplayManager const&) {}
@@ -45,6 +50,46 @@ void DisplayManager::shutDown() {
 }
 
 int DisplayManager::drawCh(Vector world_pos, char ch, Color color) const {
+    if (m_p_window == nullptr)
+        return -1;
+
+    Vector pixel_pos = spacesToPixels(world_pos);
+
+    static sf::RectangleShape rectangle;
+    rectangle.setSize(sf::Vector2f(charWidth(), charHeight()));
+    rectangle.setFillColor(WINDOW_BACKGROUND_COLOR_DEFAULT);
+    rectangle.setPosition(pixel_pos.getX() - charWidth() / 10, pixel_pos.getY() + charHeight() / 5);
+
+    m_p_window->draw(rectangle);
+
+    static sf::Text text("", m_font);
+    text.setString(ch);
+    text.setStyle(sf::Text::Bold);
+
+    if (charWidth() < charHeight())
+        text.setCharacterSize(charWidth() * 2);
+    else
+        text.setCharacterSize(charHeight() * 2);
+
+    switch(color) {
+        case YELLOW:
+            text.setFillColor(sf::Color::Yellow);
+            break;
+        case RED:
+            text.setFillColor(sf::Color::Red);
+            break;
+        case BLUE:
+            text.setFillColor(sf::Color::Blue);
+            break;
+
+        default:
+            text.setFillColor(sf::Color::Green);
+            break;
+    }
+
+    text.setPosition(pixel_pos.getX(), pixel_pos.getY());
+
+    m_p_window->draw(text);
     return 0;
 }
 
@@ -78,21 +123,21 @@ sf::RenderWindow* DisplayManager::getWindow() const {
 }
 
 
-float DisplayManager::charHeight() {
+float DisplayManager::charHeight() const {
     return getVerticalPixels() / getVertical();
 }
 
-float DisplayManager::charWidth() {
+float DisplayManager::charWidth() const {
     return getHorizontalPixels() / getHorizontal();
 
 }
 
-Vector DisplayManager::spacesToPixels(Vector spaces) {
+Vector DisplayManager::spacesToPixels(Vector spaces) const {
     Vector vector(spaces.getX() * charWidth(), spaces.getY() * charHeight());
     return vector;
 }
 
-Vector DisplayManager::pixelsToSpaces(Vector pixels) {
+Vector DisplayManager::pixelsToSpaces(Vector pixels) const {
     Vector vector(pixels.getX() / charWidth(), pixels.getY() / charHeight());
     return vector;
 }

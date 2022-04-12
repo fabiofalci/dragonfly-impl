@@ -47,10 +47,10 @@ class DisplayManager : public Manager {
         int swapBuffers();
         sf::RenderWindow *getWindow() const;
 
-        float charHeight();
-        float charWidth();
-        Vector spacesToPixels(Vector spaces);
-        Vector pixelsToSpaces(Vector pixels);
+        float charHeight() const;
+        float charWidth() const;
+        Vector spacesToPixels(Vector spaces) const;
+        Vector pixelsToSpaces(Vector pixels) const;
 };
 
 }
