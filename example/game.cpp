@@ -37,14 +37,14 @@ void runDisplayManager() {
     sf::RenderWindow *window = DM.getWindow();
     window->clear();
 
-    df::Vector pos(10, 10);
-    DM.drawCh(pos, 'H', df::Color::BLUE);
+    df::Vector pos(19, 8);
+    DM.drawCh(pos, 'F', df::Color::BLACK);
 
     sf::Text text;
     text.setFont(font);
     text.setString("Hello world");
     text.setCharacterSize(32);
-    text.setFillColor(sf::Color::Green);
+    text.setFillColor(sf::Color::Blue);
     text.setStyle(sf::Text::Bold);
     text.setPosition(93, 134);
 

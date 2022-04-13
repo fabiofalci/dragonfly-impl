@@ -33,8 +33,7 @@ int DisplayManager::startUp() {
         return 0;
     }
 
-    sf::Font font;
-    if (font.loadFromFile("../df-font.ttf") == false) {
+    if (m_font.loadFromFile("../df-font.ttf") == false) {
         std::cout << "Error. Unable to load font df-font.ttf" << std::endl;
         return 0;
     }
@@ -81,6 +80,12 @@ int DisplayManager::drawCh(Vector world_pos, char ch, Color color) const {
         case BLUE:
             text.setFillColor(sf::Color::Blue);
             break;
+        case GREEN:
+            text.setFillColor(sf::Color::Green);
+            break;
+        case WHITE:
+            text.setFillColor(sf::Color::White);
+            break;
 
         default:
             text.setFillColor(sf::Color::Green);
@@ -88,7 +93,6 @@ int DisplayManager::drawCh(Vector world_pos, char ch, Color color) const {
     }
 
     text.setPosition(pixel_pos.getX(), pixel_pos.getY());
-
     m_p_window->draw(text);
     return 0;
 }
