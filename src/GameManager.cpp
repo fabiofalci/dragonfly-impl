@@ -6,6 +6,7 @@
 #include "Clock.h"
 #include "WorldManager.h"
 #include "EventStep.h"
+#include "DisplayManager.h"
 
 namespace df {
 
@@ -27,11 +28,13 @@ int GameManager::startUp() {
     game_over = false;
     LM.startUp();
     WM.startUp();
+    DM.startUp();
     return Manager::startUp();
 }
 
 void GameManager::shutDown() {
     game_over = true;
+    DM.shutDown();
     WM.shutDown();
     LM.shutDown();
     return Manager::shutDown();
@@ -60,6 +63,8 @@ void GameManager::run() {
         onEvent(&event_step);
 
         WM.update();
+        WM.draw();
+        DM.swapBuffers();
 
         LM.writeLog("Loop %ld", loop_time);
 

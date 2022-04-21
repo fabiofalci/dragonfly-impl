@@ -70,4 +70,15 @@ int WorldManager::markForDelete(Object *p_o) {
     return m_deletions.insert(p_o);
 }
 
+int WorldManager::draw() {
+    ObjectListIterator li(&m_updates);
+    
+    for (li.first(); !li.isDone(); li.next())  {
+        Object *p_obj = li.currentObject();
+        p_obj->draw();
+    }
+
+    return 0;
+}
+
 }

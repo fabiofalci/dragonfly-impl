@@ -38,7 +38,7 @@ void runDisplayManager() {
     window->clear();
 
     df::Vector pos(19, 8);
-    DM.drawCh(pos, 'F', df::Color::BLACK);
+    DM.drawCh(pos, 'H', df::Color::BLACK);
 
     sf::Text text;
     text.setFont(font);
@@ -57,7 +57,7 @@ void runDisplayManager() {
 }
 
 int main(int argc, char *argv[]) {
-    // runGameManager();
-    runDisplayManager();
+    runGameManager();
+    // runDisplayManager();
     return 0;
 }
