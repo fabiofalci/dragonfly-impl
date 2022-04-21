@@ -20,6 +20,12 @@ const sf::Color WINDOW_BACKGROUND_COLOR_DEFAULT = sf::Color::Blue;
 const std::string WINDOW_TITLE_DEFAULT = "Dragonfly";
 const std::string FONT_FILE_DEFAULT = "df-font.ttf";
 
+enum Justification {
+    LEFT_JUSTIFIED,
+    CENTER_JUSTIFIED,
+    RIGHT_JUSTIFIED
+};
+
 class DisplayManager : public Manager {
 
     private:
@@ -40,6 +46,7 @@ class DisplayManager : public Manager {
         void shutDown();
 
         int drawCh(Vector world_pos, char ch, Color color) const;
+        int drawString(Vector world_pos, std::string str, Justification just, Color color) const;
         int getHorizontal() const;
         int getVertical() const;
         int getHorizontalPixels() const;

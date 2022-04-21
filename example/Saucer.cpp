@@ -26,7 +26,8 @@ int Saucer::eventHandler(const df::Event *p_e) {
 }
 
 int Saucer::draw() {
-    DM.drawCh(getPosition(), 'H', df::Color::BLACK);
+    // DM.drawCh(getPosition(), 'H', df::Color::BLACK);
+    DM.drawString(getPosition(), "Super", df::Justification::LEFT_JUSTIFIED, df::Color::BLACK);
     return 0;
 }
 
