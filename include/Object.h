@@ -15,6 +15,7 @@ class Object {
         int m_id;
         std::string m_type;
         Vector m_position;
+        int m_altitude;
 
     public:
         Object();
@@ -22,6 +23,9 @@ class Object {
 
         void setId(float new_id);
         float getId() const;
+
+        void setAltitude(float new_altitude);
+        int getAltitude() const;
 
         void setType(std::string new_type);
         std::string getType() const;

@@ -23,3 +23,9 @@ SCENARIO( "Verify Object position", "[test_Object.cpp]" ) {
     REQUIRE( object.getPosition().getX() == 1 );
     REQUIRE( object.getPosition().getY() == 2 );
 }
+
+SCENARIO( "Verify Object altitude", "[test_Object.cpp]" ) {
+    Object object;
+    object.setAltitude(1);
+    REQUIRE( object.getAltitude() == 1 );
+}

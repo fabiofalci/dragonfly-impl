@@ -20,6 +20,14 @@ float Object::getId() const {
     return m_id;
 }
 
+void Object::setAltitude(float new_altitude) {
+    m_altitude = new_altitude;
+}
+
+int Object::getAltitude() const {
+    return m_altitude;
+}
+
 void Object::setType(std::string new_type) {
     m_type = new_type;
 }

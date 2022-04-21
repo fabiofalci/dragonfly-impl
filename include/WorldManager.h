@@ -10,6 +10,8 @@
 
 namespace df {
 
+const int MAX_ALTITUDE = 4;
+
 class WorldManager : public Manager {
     private:
         WorldManager();
