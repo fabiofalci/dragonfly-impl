@@ -6,6 +6,7 @@ namespace df {
 
 Object::Object() {
     WM.insertObject(this);
+    setAltitude(df::MAX_ALTITUDE / 2);
 }
 
 Object::~Object() {
@@ -21,7 +22,8 @@ float Object::getId() const {
 }
 
 void Object::setAltitude(float new_altitude) {
-    m_altitude = new_altitude;
+    if (new_altitude >= 0 && new_altitude <= df::MAX_ALTITUDE)
+        m_altitude = new_altitude;
 }
 
 int Object::getAltitude() const {
