@@ -133,9 +133,11 @@ SCENARIO( "Verify WorldManager mark for delete and update", "[test_WorldManager.
     WorldManager &world_manager = WorldManager::getInstance();
     world_manager.startUp();
 
-    Object obj0, obj1, obj2;
+    Object *obj0 = new Object;
+    Object *obj1 = new Object;
+    Object *obj2 = new Object;
 
-    world_manager.markForDelete(&obj1);
+    world_manager.markForDelete(obj1);
     REQUIRE( world_manager.getAllObjects().getCount() == 3 );
 
     world_manager.update();
@@ -145,9 +147,9 @@ SCENARIO( "Verify WorldManager mark for delete and update", "[test_WorldManager.
     ObjectListIterator li(&all_objects);
 
     li.first();
-    REQUIRE( li.currentObject() == &obj0 );
+    REQUIRE( li.currentObject() == obj0 );
     li.next();
-    REQUIRE( li.currentObject() == &obj2 );
+    REQUIRE( li.currentObject() == obj2 );
     li.next();
     REQUIRE( li.isDone() == true );
 
