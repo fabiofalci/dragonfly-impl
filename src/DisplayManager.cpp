@@ -12,6 +12,7 @@ DisplayManager::DisplayManager() {
     m_window_vertical_pixels = WINDOW_VERTICAL_PIXELS_DEFAULT;
     m_window_horizontal_chars = WINDOW_HORIZONTAL_CHARS_DEFAULT ;
     m_window_vertical_chars = WINDOW_VERTICAL_CHARS_DEFAULT;
+    m_window_background_color = sf::Color::Black;
 }
 
 DisplayManager::DisplayManager(DisplayManager const&) {}
@@ -134,6 +135,10 @@ int DisplayManager::getHorizontalPixels() const {
 
 int DisplayManager::getVerticalPixels() const {
     return m_window_vertical_pixels;
+}
+
+bool DisplayManager::setBackgroundColor(int new_color) {
+    return true;
 }
 
 int DisplayManager::swapBuffers() {

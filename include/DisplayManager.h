@@ -38,6 +38,7 @@ class DisplayManager : public Manager {
         int m_window_vertical_pixels;
         int m_window_horizontal_chars;
         int m_window_vertical_chars;
+        sf::Color m_window_background_color;
 
     public:
         static DisplayManager& getInstance();
@@ -51,6 +52,7 @@ class DisplayManager : public Manager {
         int getVertical() const;
         int getHorizontalPixels() const;
         int getVerticalPixels() const;
+        bool setBackgroundColor(int new_color);
         int swapBuffers();
         sf::RenderWindow *getWindow() const;
 
