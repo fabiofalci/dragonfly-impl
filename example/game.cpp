@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "DisplayManager.h"
 #include "Saucer.h"
+#include "Star.h"
 #include "Vector.h"
 
 void runGameManager() {
@@ -15,10 +16,17 @@ void runGameManager() {
     Saucer *saucer0 = new Saucer;
     df::Vector position0(0.0, 0.0);
     saucer0->setPosition(position0);
+    saucer0->setAltitude(4);
 
     Saucer *saucer1 = new Saucer;
     df::Vector position1(10.0, 10.0);
     saucer1->setPosition(position1);
+    saucer1->setAltitude(1);
+
+    Star *star = new Star;
+    df::Vector position2(10.0, 10.0);
+    star->setPosition(position2);
+    star->setAltitude(2);
 
     GM.run();
 

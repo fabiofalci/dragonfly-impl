@@ -72,11 +72,15 @@ int WorldManager::markForDelete(Object *p_o) {
 
 int WorldManager::draw() {
     ObjectListIterator li(&m_updates);
-    
-    for (li.first(); !li.isDone(); li.next())  {
-        Object *p_obj = li.currentObject();
-        p_obj->draw();
+
+    for (int i=0; i <= MAX_ALTITUDE; i++) {
+        for (li.first(); !li.isDone(); li.next())  {
+            Object *p_obj = li.currentObject();
+            if (p_obj->getAltitude() == i) 
+                p_obj->draw();
+        }
     }
+    
 
     return 0;
 }

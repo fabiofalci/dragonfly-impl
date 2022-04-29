@@ -26,6 +26,7 @@ target_include_directories(engine
 add_executable(engine_example
 	example/game.cpp
 	example/Saucer.cpp
+	example/Star.cpp
 )
 
 target_link_libraries(engine_example
