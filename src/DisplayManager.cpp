@@ -137,7 +137,28 @@ int DisplayManager::getVerticalPixels() const {
     return m_window_vertical_pixels;
 }
 
-bool DisplayManager::setBackgroundColor(int new_color) {
+bool DisplayManager::setBackgroundColor(Color new_color) {
+    switch(new_color) {
+        case YELLOW:
+            m_window_background_color = sf::Color::Yellow;
+            break;
+        case RED:
+            m_window_background_color = sf::Color::Red;
+            break;
+        case BLUE:
+            m_window_background_color = sf::Color::Blue;
+            break;
+        case GREEN:
+            m_window_background_color = sf::Color::Green;
+            break;
+        case WHITE:
+            m_window_background_color = sf::Color::White;
+            break;
+
+        default:
+            m_window_background_color = sf::Color::Black;
+            break;
+    }
     return true;
 }
 
@@ -146,7 +167,7 @@ int DisplayManager::swapBuffers() {
         return 1;
     
     m_p_window->display();
-    m_p_window->clear();
+    m_p_window->clear(m_window_background_color);
     return 0;
 }
 

@@ -12,6 +12,7 @@
 void runGameManager() {
     GM.startUp();
     LM.setFlush(true);
+    DM.setBackgroundColor(df::BLUE);
 
     Saucer *saucer0 = new Saucer;
     df::Vector position0(0.0, 0.0);
