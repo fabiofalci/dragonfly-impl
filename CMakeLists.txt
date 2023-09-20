@@ -9,6 +9,7 @@ add_library(engine
 	src/Event.cpp
 	src/EventStep.cpp
 	src/GameManager.cpp
+	src/InputManager.cpp
 	src/LogManager.cpp
 	src/Manager.cpp
 	src/Object.cpp
