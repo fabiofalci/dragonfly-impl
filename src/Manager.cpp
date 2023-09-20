@@ -21,7 +21,7 @@ std::string Manager::getType() const {
 
 int Manager::startUp() {
     m_is_started = true;
-    return -0;
+    return 0;
 }
 
 void Manager::shutDown() {

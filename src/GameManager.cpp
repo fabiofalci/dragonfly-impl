@@ -7,6 +7,7 @@
 #include "WorldManager.h"
 #include "EventStep.h"
 #include "DisplayManager.h"
+#include "InputManager.h"
 
 namespace df {
 
@@ -29,11 +30,13 @@ int GameManager::startUp() {
     LM.startUp();
     WM.startUp();
     DM.startUp();
+    IM.startUp();
     return Manager::startUp();
 }
 
 void GameManager::shutDown() {
     game_over = true;
+    IM.shutDown();
     DM.shutDown();
     WM.shutDown();
     LM.shutDown();

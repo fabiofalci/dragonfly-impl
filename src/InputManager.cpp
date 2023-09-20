@@ -1,4 +1,7 @@
+#include <iostream>
+
 #include "InputManager.h"
+#include "DisplayManager.h"
 
 namespace df {
 
@@ -12,6 +15,13 @@ InputManager& InputManager::getInstance() {
 }
 
 int InputManager::startUp() {
+    if (!DM.isStarted()) {
+        std::cout << "Error! DisplayManger has not started" << std::endl;
+        return -1;
+    }
+
+    sf::RenderWindow *renderWindow = DM.getWindow();
+    renderWindow->setKeyRepeatEnabled(false);
     Manager::startUp();
     return 0;
 }
