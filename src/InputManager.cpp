@@ -27,6 +27,8 @@ int InputManager::startUp() {
 }
 
 void InputManager::shutDown() {
+    sf::RenderWindow *renderWindow = DM.getWindow();
+    renderWindow->setKeyRepeatEnabled(true);
     Manager::shutDown();
 }
 

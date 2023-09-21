@@ -41,6 +41,7 @@ add_executable(unit_tests
 	test/test_EventStep.cpp
 	test/test_GameManager.cpp
 	test/test_Hello.cpp
+	test/test_InputManager.cpp
 	test/test_Manager.cpp
 	test/test_Object.cpp
 	test/test_ObjectList.cpp
