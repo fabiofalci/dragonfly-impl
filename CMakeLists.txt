@@ -72,4 +72,4 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(Catch2 sfml)
 
 target_link_libraries(engine PRIVATE sfml-audio sfml-graphics sfml-system sfml-window)
-target_link_libraries(unit_tests PRIVATE Catch2 engine)
+target_link_libraries(unit_tests PRIVATE Catch2 engine sfml-audio sfml-graphics sfml-system sfml-window)

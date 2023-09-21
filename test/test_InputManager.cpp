@@ -1,7 +1,7 @@
 #include <catch2/catch.hpp>
 
+#include <DisplayManager.h>
 #include <InputManager.h>
-// #include <DisplayManager.h>
 
 using namespace df;
 
@@ -19,9 +19,9 @@ SCENARIO( "Verify InputManager type", "[test_InputManager.cpp]" ) {
 }
 
 SCENARIO( "Verify InputManager startUp shutDown", "[test_InputManager.cpp]" ) {
-    // DM.startUp();
+    DM.startUp();
     IM.startUp();
-    // REQUIRE( IM.isStarted() == true );
+    REQUIRE( IM.isStarted() == true );
     IM.shutDown();
     REQUIRE( IM.isStarted() == false );
 }

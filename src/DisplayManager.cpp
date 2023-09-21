@@ -31,12 +31,12 @@ int DisplayManager::startUp() {
     m_p_window = new sf::RenderWindow(sf::VideoMode(WINDOW_HORIZONTAL_PIXELS_DEFAULT, WINDOW_VERTICAL_PIXELS_DEFAULT), WINDOW_TITLE_DEFAULT);
     if (!m_p_window) {
         std::cout << "Error! Unable to allocate RenderWindow" << std::endl;
-        return 0;
+        return -1;
     }
 
     if (m_font.loadFromFile("../df-font.ttf") == false) {
         std::cout << "Error. Unable to load font df-font.ttf" << std::endl;
-        return 0;
+        return -1;
     }
 
     m_p_window->setMouseCursorVisible(false);
@@ -46,6 +46,7 @@ int DisplayManager::startUp() {
 
 void DisplayManager::shutDown() {
     m_p_window->close();
+    m_p_window = NULL;
     return Manager::shutDown();
 }
 
