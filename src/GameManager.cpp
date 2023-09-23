@@ -65,6 +65,7 @@ void GameManager::run() {
         EventStep event_step;
         onEvent(&event_step);
 
+        IM.getInput();
         WM.update();
         WM.draw();
         DM.swapBuffers();
