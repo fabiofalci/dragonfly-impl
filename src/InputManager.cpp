@@ -42,8 +42,11 @@ void InputManager::getInput() {
         
         if (event.type == sf::Event::KeyPressed) {
             EventKeyboard eventKeyboard;
-            // eventKeyboard.setKey();
-            // eventKeyboard.setKeyboardAction();
+            if (event.key.code == sf::Keyboard::A) {
+                eventKeyboard.setKey(Keyboard::Key::A);
+            }
+
+            eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_PRESSED);
             onEvent(&eventKeyboard);
         } 
         if (event.type == sf::Event::KeyReleased) {
