@@ -2,6 +2,7 @@
 
 #include "InputManager.h"
 #include "DisplayManager.h"
+#include "LogManager.h"
 #include "EventKeyboard.h"
 #include "EventMouse.h"
 
@@ -42,12 +43,14 @@ void InputManager::getInput() {
         
         if (event.type == sf::Event::KeyPressed) {
             EventKeyboard eventKeyboard;
+            eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_PRESSED);
             if (event.key.code == sf::Keyboard::A) {
                 eventKeyboard.setKey(Keyboard::Key::A);
+                onEvent(&eventKeyboard);
+                LM.writeLog("Sending event A");
+            } else {
+                LM.writeLog("Ignoring sfml input");
             }
-
-            eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_PRESSED);
-            onEvent(&eventKeyboard);
         } 
         if (event.type == sf::Event::KeyReleased) {
             EventKeyboard eventKeyboard;

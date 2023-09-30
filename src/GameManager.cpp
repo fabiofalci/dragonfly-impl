@@ -70,7 +70,7 @@ void GameManager::run() {
         WM.draw();
         DM.swapBuffers();
 
-        LM.writeLog("Loop %ld", loop_time);
+        // LM.writeLog("Loop %ld", loop_time);
 
         loop_time = clock->split();
         std::this_thread::sleep_for(std::chrono::milliseconds(FRAME_TIME_DEFAULT - loop_time));

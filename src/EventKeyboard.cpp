@@ -7,7 +7,7 @@ EventKeyboard::EventKeyboard() {
 }
 
 void EventKeyboard::setKey(Keyboard::Key new_key) {
-
+    m_key_val = new_key;
 }
 
 Keyboard::Key EventKeyboard::getKey() const {
@@ -15,7 +15,7 @@ Keyboard::Key EventKeyboard::getKey() const {
 }
 
 void EventKeyboard::setKeyboardAction(EventKeyboardAction new_action) {
-
+    m_keyboard_action = new_action;
 }
 
 EventKeyboardAction EventKeyboard::getKeyboardAction() const {

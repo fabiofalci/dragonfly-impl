@@ -1,9 +1,11 @@
 #include <stdlib.h>
+#include <iostream>
 
 #include "Saucer.h"
 #include "LogManager.h"
 #include "GameManager.h"
 #include "DisplayManager.h"
+#include "EventKeyboard.h"
 
 Saucer::Saucer() {
     setType("Saucer");
@@ -22,8 +24,19 @@ int Saucer::eventHandler(const df::Event *p_e) {
         return 1;
     }
     if (p_e->getType() == "EventKeyboard") {
+        const df::EventKeyboard* p_event = dynamic_cast<const df::EventKeyboard*>(p_e);
 
-        LM.writeLog("Got keyboard event");
+        switch (p_event->getKey()) {
+        case df::Keyboard::A:
+            LM.writeLog("Got keyboard event: A");
+            break;
+        case Keyboard::Key::UNDEFINED_KEY:
+            LM.writeLog("Got keyboard event: undefined");
+            break;
+        default:
+            LM.writeLog("Got keyboard event: unknow");
+            break;
+        }
         return 1;
     }
     LM.writeLog("Ignored event %s", p_e->getType().c_str());
