@@ -24,14 +24,15 @@ EventKeyboardAction EventKeyboard::getKeyboardAction() const {
 
 Keyboard::Key EventKeyboard::convertKey(sf::Keyboard::Key code) {
     switch (code) {
-    case sf::Keyboard::A: return Keyboard::Key::A;
-    case sf::Keyboard::B: return Keyboard::Key::B;
-    case sf::Keyboard::C: return Keyboard::Key::C;
-    case sf::Keyboard::D: return Keyboard::Key::D;
-    case sf::Keyboard::E: return Keyboard::Key::E;
+        case sf::Keyboard::A: return Keyboard::Key::A;
+        case sf::Keyboard::B: return Keyboard::Key::B;
+        case sf::Keyboard::C: return Keyboard::Key::C;
+        case sf::Keyboard::D: return Keyboard::Key::D;
+        case sf::Keyboard::E: return Keyboard::Key::E;
+        case sf::Keyboard::Q: return Keyboard::Key::Q;
     
-    default:
-        return Keyboard::Key::UNDEFINED_KEY;
+        default:
+            return Keyboard::Key::UNDEFINED_KEY;
     }
 }
 

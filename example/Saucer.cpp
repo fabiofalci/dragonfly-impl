@@ -6,6 +6,7 @@
 #include "GameManager.h"
 #include "DisplayManager.h"
 #include "EventKeyboard.h"
+#include "EventMouse.h"
 
 Saucer::Saucer() {
     setType("Saucer");
@@ -39,6 +40,9 @@ int Saucer::eventHandler(const df::Event *p_e) {
         case Keyboard::Key::D:
             LM.writeLog("Got keyboard event: D");
             break;
+        case Keyboard::Key::Q:
+            GM.setGameOver();
+            break;
         case Keyboard::Key::UNDEFINED_KEY:
             LM.writeLog("Got keyboard event: undefined");
             break;
@@ -48,6 +52,18 @@ int Saucer::eventHandler(const df::Event *p_e) {
         }
         return 1;
     }
+
+    if (p_e->getType() == df::MSE_EVENT) {
+        const df::EventMouse* p_event = dynamic_cast<const df::EventMouse*>(p_e);
+
+        if (p_event->getMouseAction() == EventMouseAction::CLICKED) {
+            LM.writeLog("Clicked %f %f", p_event->getMousePosition().getX(), p_event->getMousePosition().getY());
+        }
+        if (p_event->getMouseAction() == EventMouseAction::MOVED) {
+            // LM.writeLog("Move %i %i", p_event->getMousePosition().getX(), p_event->getMousePosition().getY());
+        }
+    }
+
     LM.writeLog("Ignored event %s", p_e->getType().c_str());
     return 0;
 }

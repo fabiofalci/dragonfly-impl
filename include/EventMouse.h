@@ -3,6 +3,7 @@
 #define __EVENT_MOUSE_H__
 
 #include <string>
+#include <SFML/Window.hpp>
 
 #include "Event.h"
 #include "Vector.h"
@@ -44,6 +45,7 @@ class EventMouse : public Event {
         void setMousePosition(Vector new_position);
         Vector getMousePosition() const;
 
+        static Mouse::Button convertButton(sf::Mouse::Button code);
 };
 
 }
