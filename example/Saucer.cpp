@@ -23,12 +23,21 @@ int Saucer::eventHandler(const df::Event *p_e) {
 
         return 1;
     }
-    if (p_e->getType() == "EventKeyboard") {
+    if (p_e->getType() == df::KEYBOARD_EVENT) {
         const df::EventKeyboard* p_event = dynamic_cast<const df::EventKeyboard*>(p_e);
 
         switch (p_event->getKey()) {
         case Keyboard::Key::A:
             LM.writeLog("Got keyboard event: A");
+            break;
+        case Keyboard::Key::B:
+            LM.writeLog("Got keyboard event: B");
+            break;
+        case Keyboard::Key::C:
+            LM.writeLog("Got keyboard event: C");
+            break;
+        case Keyboard::Key::D:
+            LM.writeLog("Got keyboard event: D");
             break;
         case Keyboard::Key::UNDEFINED_KEY:
             LM.writeLog("Got keyboard event: undefined");

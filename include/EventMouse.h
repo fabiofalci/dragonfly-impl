@@ -7,8 +7,6 @@
 #include "Event.h"
 #include "Vector.h"
 
-const std::string MSE_EVENT = "df::mouse";
-
 enum EventMouseAction {
     UNDEFINED_MOUSE_ACTION = -1,
     CLICKED,
@@ -26,6 +24,8 @@ enum Button {
 }
 
 namespace df {
+
+const std::string MSE_EVENT = "df::mouse";
 
 class EventMouse : public Event {
 

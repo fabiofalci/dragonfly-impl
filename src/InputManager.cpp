@@ -44,10 +44,10 @@ void InputManager::getInput() {
         if (event.type == sf::Event::KeyPressed) {
             EventKeyboard eventKeyboard;
             eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_PRESSED);
-            if (event.key.code == sf::Keyboard::A) {
-                eventKeyboard.setKey(Keyboard::Key::A);
+            eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
+            if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
                 onEvent(&eventKeyboard);
-                LM.writeLog("Sending event A");
+                LM.writeLog("Sending event");
             } else {
                 LM.writeLog("Ignoring sfml input");
             }

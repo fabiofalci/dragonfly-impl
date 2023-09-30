@@ -3,7 +3,7 @@
 namespace df {
 
 EventMouse::EventMouse() {
-    setType("EventMouse");
+    setType(MSE_EVENT);
 }
 
 void EventMouse::setMouseButton(Mouse::Button new_button) {

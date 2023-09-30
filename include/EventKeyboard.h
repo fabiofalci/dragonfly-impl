@@ -3,10 +3,9 @@
 #define __EVENT_KEYBOARD_H__
 
 #include <string>
+#include <SFML/Graphics.hpp>
 
 #include "Event.h"
-
-const std::string KEYBOARD_EVENT = "df::keyboard";
 
 enum EventKeyboardAction {
     UNDEFINED_KEYBOARD_ACTION = -1,
@@ -29,6 +28,8 @@ enum Key {
 
 namespace df {
 
+const std::string KEYBOARD_EVENT = "df::keyboard";
+
 class EventKeyboard : public Event {
 
     private:
@@ -42,6 +43,8 @@ class EventKeyboard : public Event {
         Keyboard::Key getKey() const;
         void setKeyboardAction(EventKeyboardAction new_action);
         EventKeyboardAction getKeyboardAction() const;
+
+        static Keyboard::Key convertKey(sf::Keyboard::Key code);
 
 };
 

@@ -3,7 +3,7 @@
 namespace df {
 
 EventKeyboard::EventKeyboard() {
-    setType("EventKeyboard");
+    setType(KEYBOARD_EVENT);
 }
 
 void EventKeyboard::setKey(Keyboard::Key new_key) {
@@ -21,5 +21,19 @@ void EventKeyboard::setKeyboardAction(EventKeyboardAction new_action) {
 EventKeyboardAction EventKeyboard::getKeyboardAction() const {
     return m_keyboard_action;
 }
+
+Keyboard::Key EventKeyboard::convertKey(sf::Keyboard::Key code) {
+    switch (code) {
+    case sf::Keyboard::A: return Keyboard::Key::A;
+    case sf::Keyboard::B: return Keyboard::Key::B;
+    case sf::Keyboard::C: return Keyboard::Key::C;
+    case sf::Keyboard::D: return Keyboard::Key::D;
+    case sf::Keyboard::E: return Keyboard::Key::E;
+    
+    default:
+        return Keyboard::Key::UNDEFINED_KEY;
+    }
+}
+
 
 }
