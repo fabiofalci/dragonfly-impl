@@ -27,7 +27,7 @@ int Saucer::eventHandler(const df::Event *p_e) {
         const df::EventKeyboard* p_event = dynamic_cast<const df::EventKeyboard*>(p_e);
 
         switch (p_event->getKey()) {
-        case df::Keyboard::A:
+        case Keyboard::Key::A:
             LM.writeLog("Got keyboard event: A");
             break;
         case Keyboard::Key::UNDEFINED_KEY:

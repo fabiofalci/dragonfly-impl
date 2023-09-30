@@ -11,7 +11,7 @@ void EventKeyboard::setKey(Keyboard::Key new_key) {
 }
 
 Keyboard::Key EventKeyboard::getKey() const {
-    return Keyboard::Key::UNDEFINED_KEY;
+    return m_key_val;
 }
 
 void EventKeyboard::setKeyboardAction(EventKeyboardAction new_action) {
@@ -19,7 +19,7 @@ void EventKeyboard::setKeyboardAction(EventKeyboardAction new_action) {
 }
 
 EventKeyboardAction EventKeyboard::getKeyboardAction() const {
-    return EventKeyboardAction::UNDEFINED_KEYBOARD_ACTION;
+    return m_keyboard_action;
 }
 
 }
