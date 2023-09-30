@@ -21,7 +21,12 @@ int Saucer::eventHandler(const df::Event *p_e) {
 
         return 1;
     }
-    LM.writeLog("Ignored event");
+    if (p_e->getType() == "EventKeyboard") {
+
+        LM.writeLog("Got keyboard event");
+        return 1;
+    }
+    LM.writeLog("Ignored event %s", p_e->getType().c_str());
     return 0;
 }
 

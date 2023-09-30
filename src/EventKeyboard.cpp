@@ -6,7 +6,7 @@ EventKeyboard::EventKeyboard() {
     setType("EventKeyboard");
 }
 
-void setKey(Keyboard::Key new_key) {
+void EventKeyboard::setKey(Keyboard::Key new_key) {
 
 }
 
