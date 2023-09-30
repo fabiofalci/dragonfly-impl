@@ -3,7 +3,7 @@
 #define __EVENT_KEYBOARD_H__
 
 #include <string>
-#include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 #include "Event.h"
 

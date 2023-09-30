@@ -47,17 +47,17 @@ void InputManager::getInput() {
             eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
             if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
                 onEvent(&eventKeyboard);
-                LM.writeLog("Sending event");
-            } else {
-                LM.writeLog("Ignoring sfml input");
+                LM.writeLog("Sending keyboard pressed event");
             }
         } 
         if (event.type == sf::Event::KeyReleased) {
             EventKeyboard eventKeyboard;
-            // eventKeyboard.setKey();
-            // eventKeyboard.setKeyboardAction();
-            onEvent(&eventKeyboard);
-
+            eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_RELEASED);
+            eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
+            if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
+                onEvent(&eventKeyboard);
+                LM.writeLog("Sending keyboard released event");
+            }
         }
         if (event.type == sf::Event::MouseMoved) {
             EventMouse eventMouse;
