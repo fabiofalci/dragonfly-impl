@@ -38,6 +38,7 @@ void InputManager::shutDown() {
 void InputManager::getInput() {
     sf::RenderWindow *renderWindow = DM.getWindow();
     sf::Event event;
+    sf::Keyboard::Key actionKey;
 
     while (renderWindow->pollEvent(event)) {
         
@@ -45,6 +46,7 @@ void InputManager::getInput() {
             EventKeyboard eventKeyboard;
             eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
             if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
+                actionKey = event.key.code;
                 eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_PRESSED);
                 onEvent(&eventKeyboard);
                 LM.writeLog("Sending keyboard pressed event");
@@ -53,6 +55,7 @@ void InputManager::getInput() {
             EventKeyboard eventKeyboard;
             eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
             if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
+                actionKey = event.key.code;
                 eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_RELEASED);
                 onEvent(&eventKeyboard);
                 LM.writeLog("Sending keyboard released event");
@@ -86,6 +89,10 @@ void InputManager::getInput() {
             }
 
         }
+    }
+
+    if (sf::Keyboard::isKeyPressed(actionKey)) {
+        LM.writeLog("> Key is being pressed");
     }
 
 }

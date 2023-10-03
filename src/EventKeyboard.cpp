@@ -29,6 +29,9 @@ Keyboard::Key EventKeyboard::convertKey(sf::Keyboard::Key code) {
         case sf::Keyboard::C: return Keyboard::Key::C;
         case sf::Keyboard::D: return Keyboard::Key::D;
         case sf::Keyboard::E: return Keyboard::Key::E;
+        case sf::Keyboard::F: return Keyboard::Key::F;
+        case sf::Keyboard::G: return Keyboard::Key::G;
+        case sf::Keyboard::H: return Keyboard::Key::H;
         case sf::Keyboard::Q: return Keyboard::Key::Q;
     
         default:
