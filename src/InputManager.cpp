@@ -66,7 +66,7 @@ void InputManager::getInput() {
             Vector vector(event.mouseMove.x, event.mouseButton.y);
             eventMouse.setMousePosition(vector);
             onEvent(&eventMouse);
-            LM.writeLog("Sending mouse moved event");
+            // LM.writeLog("Sending mouse moved event");
         } else if (event.type == sf::Event::MouseButtonPressed) {
             EventMouse eventMouse;
             eventMouse.setMouseButton(EventMouse::convertButton(event.mouseButton.button));
@@ -75,7 +75,7 @@ void InputManager::getInput() {
                 Vector vector(event.mouseButton.x, event.mouseButton.y);
                 eventMouse.setMousePosition(vector);
                 onEvent(&eventMouse);
-                LM.writeLog("Sending mouse pressed event");
+                // LM.writeLog("Sending mouse pressed event");
             }
         } else if (event.type == sf::Event::MouseButtonReleased) {
             EventMouse eventMouse;
@@ -85,14 +85,21 @@ void InputManager::getInput() {
                 Vector vector(event.mouseButton.x, event.mouseButton.y);
                 eventMouse.setMousePosition(vector);
                 onEvent(&eventMouse);
-                LM.writeLog("Sending mouse clicked event");
+                // LM.writeLog("Sending mouse clicked event");
             }
 
         }
     }
 
     if (sf::Keyboard::isKeyPressed(actionKey)) {
-        LM.writeLog("> Key is being pressed");
+        EventKeyboard eventKeyboard;
+        eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
+        if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
+            actionKey = event.key.code;
+            eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_DOWN);
+            onEvent(&eventKeyboard);
+            LM.writeLog("Sending keyboard is being pressed event");
+        }
     }
 
 }

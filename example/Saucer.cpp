@@ -27,6 +27,14 @@ int Saucer::eventHandler(const df::Event *p_e) {
     if (p_e->getType() == df::KEYBOARD_EVENT) {
         const df::EventKeyboard* p_event = dynamic_cast<const df::EventKeyboard*>(p_e);
 
+        if (p_event->getKeyboardAction() == EventKeyboardAction::KEY_PRESSED) {
+            LM.writeLog("Got pressed");
+        } else if (p_event->getKeyboardAction() == EventKeyboardAction::KEY_RELEASED) {
+            LM.writeLog("Got released");
+        } else if (p_event->getKeyboardAction() == EventKeyboardAction::KEY_DOWN) {
+            LM.writeLog("Got key down");
+        }
+
         switch (p_event->getKey()) {
         case Keyboard::Key::A:
             LM.writeLog("Got keyboard event: A");
