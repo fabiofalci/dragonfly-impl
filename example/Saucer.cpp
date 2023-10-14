@@ -36,14 +36,14 @@ int Saucer::eventHandler(const df::Event *p_e) {
         }
 
         switch (p_event->getKey()) {
+        case Keyboard::Key::W:
+            LM.writeLog("Got keyboard event: W");
+            break;
         case Keyboard::Key::A:
             LM.writeLog("Got keyboard event: A");
             break;
-        case Keyboard::Key::B:
-            LM.writeLog("Got keyboard event: B");
-            break;
-        case Keyboard::Key::C:
-            LM.writeLog("Got keyboard event: C");
+        case Keyboard::Key::S:
+            LM.writeLog("Got keyboard event: S");
             break;
         case Keyboard::Key::D:
             LM.writeLog("Got keyboard event: D");

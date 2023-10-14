@@ -38,7 +38,6 @@ void InputManager::shutDown() {
 void InputManager::getInput() {
     sf::RenderWindow *renderWindow = DM.getWindow();
     sf::Event event;
-    sf::Keyboard::Key actionKey;
 
     while (renderWindow->pollEvent(event)) {
         
@@ -46,19 +45,15 @@ void InputManager::getInput() {
             EventKeyboard eventKeyboard;
             eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
             if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
-                actionKey = event.key.code;
                 eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_PRESSED);
                 onEvent(&eventKeyboard);
-                LM.writeLog("Sending keyboard pressed event");
             }
         } else if (event.type == sf::Event::KeyReleased) {
             EventKeyboard eventKeyboard;
             eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
             if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
-                actionKey = event.key.code;
                 eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_RELEASED);
                 onEvent(&eventKeyboard);
-                LM.writeLog("Sending keyboard released event");
             }
         } else if (event.type == sf::Event::MouseMoved) {
             EventMouse eventMouse;
@@ -66,7 +61,6 @@ void InputManager::getInput() {
             Vector vector(event.mouseMove.x, event.mouseButton.y);
             eventMouse.setMousePosition(vector);
             onEvent(&eventMouse);
-            // LM.writeLog("Sending mouse moved event");
         } else if (event.type == sf::Event::MouseButtonPressed) {
             EventMouse eventMouse;
             eventMouse.setMouseButton(EventMouse::convertButton(event.mouseButton.button));
@@ -75,7 +69,6 @@ void InputManager::getInput() {
                 Vector vector(event.mouseButton.x, event.mouseButton.y);
                 eventMouse.setMousePosition(vector);
                 onEvent(&eventMouse);
-                // LM.writeLog("Sending mouse pressed event");
             }
         } else if (event.type == sf::Event::MouseButtonReleased) {
             EventMouse eventMouse;
@@ -85,24 +78,39 @@ void InputManager::getInput() {
                 Vector vector(event.mouseButton.x, event.mouseButton.y);
                 eventMouse.setMousePosition(vector);
                 onEvent(&eventMouse);
-                // LM.writeLog("Sending mouse clicked event");
             }
 
         }
     }
 
-    if (sf::Keyboard::isKeyPressed(actionKey)) {
-        EventKeyboard eventKeyboard;
-        eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
-        if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
-            actionKey = event.key.code;
-            eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_DOWN);
-            onEvent(&eventKeyboard);
-            LM.writeLog("Sending keyboard is being pressed event");
-        }
-    }
+    handlePressedKey(sf::Keyboard::W);
+    handlePressedKey(sf::Keyboard::A);
+    handlePressedKey(sf::Keyboard::S);
+    handlePressedKey(sf::Keyboard::D);
+
+    // if (sf::Mouse::isKeyPressed(actionButton)) {
+    //     EventMouse eventMouse;
+    //     eventMouse.setMouseButton(EventMouse::convertButton(event.mouseButton.button))
+    //     if (eventMouse.getMouseButton() != Mouse::Button::UNDEFINED_MOUSE_BUTTON) {
+    //         eventMouse.setMouseAction(EventMouseAction::);
+    //         Vector vector(event.mouseButton.x, event.mouseButton.y);
+    //         eventMouse.setMousePosition(vector);
+    //         onEvent(&eventMouse);
+    //     }
+    // }
 
 }
 
+
+void InputManager::handlePressedKey(sf::Keyboard::Key key) {
+    if (sf::Keyboard::isKeyPressed(key)) {
+        EventKeyboard eventKeyboard;
+        eventKeyboard.setKey(EventKeyboard::convertKey(key));
+        if (eventKeyboard.getKey() != Keyboard::Key::UNDEFINED_KEY) {
+            eventKeyboard.setKeyboardAction(EventKeyboardAction::KEY_DOWN);
+            onEvent(&eventKeyboard);
+        }
+    }
+}
 
 }
