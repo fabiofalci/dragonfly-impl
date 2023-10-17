@@ -14,10 +14,10 @@ void runGameManager() {
     LM.setFlush(true);
     DM.setBackgroundColor(df::BLUE);
 
-    Saucer *saucer0 = new Saucer;
-    df::Vector position0(0.0, 0.0);
-    saucer0->setPosition(position0);
-    saucer0->setAltitude(4);
+    // Saucer *saucer0 = new Saucer;
+    // df::Vector position0(0.0, 0.0);
+    // saucer0->setPosition(position0);
+    // saucer0->setAltitude(4);
 
     Saucer *saucer1 = new Saucer;
     df::Vector position1(10.0, 10.0);
@@ -25,7 +25,7 @@ void runGameManager() {
     saucer1->setAltitude(1);
 
     Star *star = new Star;
-    df::Vector position2(10.0, 10.0);
+    df::Vector position2(20.0, 20.0);
     star->setPosition(position2);
     star->setAltitude(2);
 
