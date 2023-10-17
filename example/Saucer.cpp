@@ -38,15 +38,19 @@ int Saucer::eventHandler(const df::Event *p_e) {
         switch (p_event->getKey()) {
         case Keyboard::Key::W:
             LM.writeLog("Got keyboard event: W");
+            setPosition(df::Vector(getPosition().getX(), getPosition().getY() - 0.1));
             break;
         case Keyboard::Key::A:
             LM.writeLog("Got keyboard event: A");
+            setPosition(df::Vector(getPosition().getX() - 0.1, getPosition().getY()));
             break;
         case Keyboard::Key::S:
             LM.writeLog("Got keyboard event: S");
+            setPosition(df::Vector(getPosition().getX(), getPosition().getY() + 0.1));
             break;
         case Keyboard::Key::D:
             LM.writeLog("Got keyboard event: D");
+            setPosition(df::Vector(getPosition().getX() + 0.1, getPosition().getY()));
             break;
         case Keyboard::Key::Q:
             GM.setGameOver();
