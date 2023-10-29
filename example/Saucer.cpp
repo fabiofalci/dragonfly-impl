@@ -15,13 +15,9 @@ Saucer::Saucer() {
 
 int Saucer::eventHandler(const df::Event *p_e) {
     if (p_e->getType() == "STEP_EVENT") {
-        // df::Vector position(getPosition().getX() + 1.2, getPosition().getY() + 2.9);
-        // setPosition(position);
-        // step_count++;
-        // LM.writeLog("Moved object to (%f, %f) step count %i", getPosition().getX(), getPosition().getY(), step_count);
-        // if (step_count == 100)
-        //     GM.setGameOver(true);
-
+        df::Vector pos = getPosition();
+        pos.setX(pos.getX() + 0.06);
+        setPosition(pos);
         return 1;
     }
     if (p_e->getType() == df::KEYBOARD_EVENT) {
