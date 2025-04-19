@@ -1,13 +1,13 @@
 #include <chrono>
 #include <thread>
 
-#include "GameManager.h"
-#include "LogManager.h"
 #include "Clock.h"
-#include "WorldManager.h"
-#include "EventStep.h"
 #include "DisplayManager.h"
+#include "EventStep.h"
+#include "GameManager.h"
 #include "InputManager.h"
+#include "LogManager.h"
+#include "WorldManager.h"
 
 namespace df {
 
@@ -16,11 +16,11 @@ GameManager::GameManager() {
     game_over = false;
 }
 
-GameManager::GameManager(GameManager const&) {}
+GameManager::GameManager(GameManager const &) {}
 
-void GameManager::operator=(GameManager const&) {}
+void GameManager::operator=(GameManager const &) {}
 
-GameManager& GameManager::getInstance() {
+GameManager &GameManager::getInstance() {
     static GameManager *p_game_manager = new GameManager;
     return *p_game_manager;
 }
@@ -43,17 +43,11 @@ void GameManager::shutDown() {
     return Manager::shutDown();
 }
 
-void GameManager::setGameOver(bool new_game_over) {
-    game_over = new_game_over;
-}
+void GameManager::setGameOver(bool new_game_over) { game_over = new_game_over; }
 
-bool GameManager::getGameOver() const {
-    return game_over;
-}
+bool GameManager::getGameOver() const { return game_over; }
 
-int GameManager::getFrameTime() const {
-    return 0;
-}
+int GameManager::getFrameTime() const { return 0; }
 
 void GameManager::run() {
     df::Clock *clock = new df::Clock;
@@ -75,7 +69,6 @@ void GameManager::run() {
         loop_time = clock->split();
         std::this_thread::sleep_for(std::chrono::milliseconds(FRAME_TIME_DEFAULT - loop_time));
     }
-
 }
 
-}
+} // namespace df

@@ -1,18 +1,16 @@
 #include <iostream>
 
-#include "InputManager.h"
 #include "DisplayManager.h"
-#include "LogManager.h"
 #include "EventKeyboard.h"
 #include "EventMouse.h"
+#include "InputManager.h"
+#include "LogManager.h"
 
 namespace df {
 
-InputManager::InputManager() {
-    setType("InputManager");
-}
+InputManager::InputManager() { setType("InputManager"); }
 
-InputManager& InputManager::getInstance() {
+InputManager &InputManager::getInstance() {
     static InputManager *p_input_manager = new InputManager;
     return *p_input_manager;
 }
@@ -40,7 +38,7 @@ void InputManager::getInput() {
     sf::Event event;
 
     while (renderWindow->pollEvent(event)) {
-        
+
         if (event.type == sf::Event::KeyPressed) {
             EventKeyboard eventKeyboard;
             eventKeyboard.setKey(EventKeyboard::convertKey(event.key.code));
@@ -79,7 +77,6 @@ void InputManager::getInput() {
                 eventMouse.setMousePosition(vector);
                 onEvent(&eventMouse);
             }
-
         }
     }
 
@@ -98,9 +95,7 @@ void InputManager::getInput() {
     //         onEvent(&eventMouse);
     //     }
     // }
-
 }
-
 
 void InputManager::handlePressedKey(sf::Keyboard::Key key) {
     if (sf::Keyboard::isKeyPressed(key)) {
@@ -113,4 +108,4 @@ void InputManager::handlePressedKey(sf::Keyboard::Key key) {
     }
 }
 
-}
+} // namespace df
