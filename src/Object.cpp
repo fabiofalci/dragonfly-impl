@@ -49,6 +49,11 @@ Vector Object::getVelocity() const {
     return getDirection();
 }
 
+Vector Object::predictPosition() {
+    Vector new_pos = m_position + getVelocity();
+    return new_pos;
+}
+
 int Object::eventHandler(const Event *p_e) { return 0; }
 
 int Object::draw() { return 0; }

@@ -1,12 +1,12 @@
-#include <stdlib.h>
 #include <iostream>
+#include <stdlib.h>
 
-#include "Saucer.h"
-#include "LogManager.h"
-#include "GameManager.h"
 #include "DisplayManager.h"
 #include "EventKeyboard.h"
 #include "EventMouse.h"
+#include "GameManager.h"
+#include "LogManager.h"
+#include "Saucer.h"
 
 Saucer::Saucer() {
     setType("Saucer");
@@ -14,14 +14,14 @@ Saucer::Saucer() {
 }
 
 int Saucer::eventHandler(const df::Event *p_e) {
-    if (p_e->getType() == "STEP_EVENT") {
-        df::Vector pos = getPosition();
-        pos.setX(pos.getX() + 0.06);
-        setPosition(pos);
-        return 1;
-    }
+    // if (p_e->getType() == "STEP_EVENT") {
+    //     df::Vector pos = getPosition();
+    //     pos.setX(pos.getX() + 0.06);
+    //     setPosition(pos);
+    //     return 1;
+    // }
     if (p_e->getType() == df::KEYBOARD_EVENT) {
-        const df::EventKeyboard* p_event = dynamic_cast<const df::EventKeyboard*>(p_e);
+        const df::EventKeyboard *p_event = dynamic_cast<const df::EventKeyboard *>(p_e);
 
         if (p_event->getKeyboardAction() == EventKeyboardAction::KEY_PRESSED) {
             LM.writeLog("Got pressed");
@@ -62,7 +62,7 @@ int Saucer::eventHandler(const df::Event *p_e) {
     }
 
     if (p_e->getType() == df::MSE_EVENT) {
-        const df::EventMouse* p_event = dynamic_cast<const df::EventMouse*>(p_e);
+        const df::EventMouse *p_event = dynamic_cast<const df::EventMouse *>(p_e);
 
         if (p_event->getMouseAction() == EventMouseAction::CLICKED) {
             LM.writeLog("Clicked %f %f", p_event->getMousePosition().getX(), p_event->getMousePosition().getY());
@@ -72,7 +72,7 @@ int Saucer::eventHandler(const df::Event *p_e) {
         }
     }
 
-    LM.writeLog("Ignored event %s", p_e->getType().c_str());
+    // LM.writeLog("Ignored event %s", p_e->getType().c_str());
     return 0;
 }
 
@@ -81,4 +81,3 @@ int Saucer::draw() {
     DM.drawString(getPosition(), "Sau", df::Justification::LEFT_JUSTIFIED, df::Color::BLACK);
     return 0;
 }
-

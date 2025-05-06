@@ -1,10 +1,10 @@
 #include <chrono>
-#include <thread>
 #include <iostream>
+#include <thread>
 
-#include "LogManager.h"
-#include "GameManager.h"
 #include "DisplayManager.h"
+#include "GameManager.h"
+#include "LogManager.h"
 #include "Saucer.h"
 #include "Star.h"
 #include "Vector.h"
@@ -23,6 +23,8 @@ void runGameManager() {
     df::Vector position1(10.0, 10.0);
     saucer1->setPosition(position1);
     saucer1->setAltitude(1);
+    saucer1->setDirection(df::Vector(0.1, 0));
+    // saucer1->setVelocity(df::Vector(-0.25, 0));
 
     Star *star = new Star;
     df::Vector position2(20.0, 20.0);
